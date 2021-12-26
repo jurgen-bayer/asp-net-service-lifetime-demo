@@ -5,10 +5,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Add three service instances based on the same class but with different lifetimes
+// Add three counter service instances based on the same class but with different lifetimes
 builder.Services.AddTransient<ITransientCounterService, CounterService>();
 builder.Services.AddScoped<IScopedCounterService, CounterService>();
 builder.Services.AddSingleton<ISingletonCounterService, CounterService>();
+
+// Add service instances for the services using the counter service
 builder.Services.AddTransient<IServiceUsingTransientCounterService, ServiceUsingTransientCounterService>();
 builder.Services.AddScoped<IServiceUsingScopedCounterService, ServiceUsingScopedCounterService>();
 builder.Services.AddSingleton<IServiceUsingSingletonCounterService, ServiceUsingSingletonCounterService>();

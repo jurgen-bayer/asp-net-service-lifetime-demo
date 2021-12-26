@@ -2,7 +2,9 @@
 
 public interface IServiceUsingSingletonCounterService
 { 
-    Guid Id { get; }
+    int Id { get; }
     
+    int CounterServiceId { get; }
+
     int GetCount();
 }

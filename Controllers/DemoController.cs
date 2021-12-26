@@ -40,6 +40,7 @@ public class DemoController : ControllerBase
             CountFromDemoServiceUsingCounterService = this.serviceUsingTransientCounterService.GetCount(),
             CounterServiceId = this.transientCounterService.Id,
             DemoServiceId = this.serviceUsingTransientCounterService.Id, 
+            DemoServiceCounterServiceId = this.serviceUsingTransientCounterService.CounterServiceId
         };
     }
 
@@ -53,6 +54,7 @@ public class DemoController : ControllerBase
             CountFromDemoServiceUsingCounterService = this.serviceUsingTransientCounterService.GetCount(),
             CounterServiceId = this.transientCounterService.Id,
             DemoServiceId = this.serviceUsingTransientCounterService.Id, 
+            DemoServiceCounterServiceId = this.serviceUsingTransientCounterService.CounterServiceId
         };
     }
     
@@ -64,7 +66,8 @@ public class DemoController : ControllerBase
             CountDirectlyFromCounterService = this.scopedCounterService.Count,
             CountFromDemoServiceUsingCounterService = this.serviceUsingScopedCounterService.GetCount(),
             CounterServiceId = this.scopedCounterService.Id,
-            DemoServiceId = this.serviceUsingScopedCounterService.Id, 
+            DemoServiceId = this.serviceUsingScopedCounterService.Id,
+            DemoServiceCounterServiceId = this.serviceUsingScopedCounterService.CounterServiceId
         };
     }
 
@@ -78,6 +81,7 @@ public class DemoController : ControllerBase
             CountFromDemoServiceUsingCounterService = this.serviceUsingScopedCounterService.GetCount(),
             CounterServiceId = this.scopedCounterService.Id,
             DemoServiceId = this.serviceUsingScopedCounterService.Id, 
+            DemoServiceCounterServiceId = this.serviceUsingScopedCounterService.CounterServiceId
         };
     }
     
@@ -90,6 +94,7 @@ public class DemoController : ControllerBase
             CountFromDemoServiceUsingCounterService = this.serviceUsingSingletonCounterService.GetCount(),
             CounterServiceId = this.singletonCounterService.Id,
             DemoServiceId = this.serviceUsingSingletonCounterService.Id, 
+            DemoServiceCounterServiceId = this.serviceUsingSingletonCounterService.CounterServiceId
         };
     }
 
@@ -102,7 +107,8 @@ public class DemoController : ControllerBase
             CountDirectlyFromCounterService = this.singletonCounterService.Count,
             CountFromDemoServiceUsingCounterService = this.serviceUsingSingletonCounterService.GetCount(),
             CounterServiceId = this.singletonCounterService.Id,
-            DemoServiceId = this.serviceUsingSingletonCounterService.Id, 
+            DemoServiceId = this.serviceUsingSingletonCounterService.Id,
+            DemoServiceCounterServiceId = this.serviceUsingSingletonCounterService.CounterServiceId
         };
     }
 }

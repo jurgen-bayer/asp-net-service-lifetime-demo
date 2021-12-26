@@ -2,7 +2,7 @@
 
 public interface ISingletonCounterService
 { 
-    Guid Id { get; }
+    int Id { get; }
     
     int Count { get; }
 

@@ -1,8 +1,10 @@
-﻿namespace ServiceLifetimeDemo.Services;
+﻿using BlazorWebAssemblyServiceLifetimeDemo.Client.Services;
+
+namespace ServiceLifetimeDemo.Services;
 
 public class CounterService: ITransientCounterService, IScopedCounterService, ISingletonCounterService
 {
-    public Guid Id { get; } = Guid.NewGuid();
+    public int Id { get; } = IdHelper.GetNextId();
 
     public int Count { get; private set;  }
 

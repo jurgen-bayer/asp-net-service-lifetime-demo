@@ -2,7 +2,7 @@
 
 public interface ITransientCounterService
 { 
-    Guid Id { get; }
+    int Id { get; }
 
     int Count { get; }
     

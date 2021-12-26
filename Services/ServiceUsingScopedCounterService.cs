@@ -1,4 +1,6 @@
-﻿namespace ServiceLifetimeDemo.Services;
+﻿using BlazorWebAssemblyServiceLifetimeDemo.Client.Services;
+
+namespace ServiceLifetimeDemo.Services;
 
 public class ServiceUsingScopedCounterService: IServiceUsingScopedCounterService
 {
@@ -9,7 +11,9 @@ public class ServiceUsingScopedCounterService: IServiceUsingScopedCounterService
         this.counterService = counterService;
     }
 
-    public Guid Id { get; } = Guid.NewGuid();
+    public int Id { get; } = IdHelper.GetNextId();
+    
+    public int CounterServiceId => this.counterService.Id;
 
     public int GetCount()
     {

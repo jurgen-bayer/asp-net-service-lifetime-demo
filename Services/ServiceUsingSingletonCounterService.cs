@@ -1,4 +1,6 @@
-﻿namespace ServiceLifetimeDemo.Services;
+﻿using BlazorWebAssemblyServiceLifetimeDemo.Client.Services;
+
+namespace ServiceLifetimeDemo.Services;
 
 public class ServiceUsingSingletonCounterService: IServiceUsingSingletonCounterService
 {
@@ -9,8 +11,10 @@ public class ServiceUsingSingletonCounterService: IServiceUsingSingletonCounterS
         this.counterService = counterService;
     }
 
-    public Guid Id { get; } = Guid.NewGuid();
+    public int Id { get; } = IdHelper.GetNextId();
     
+    public int CounterServiceId => this.counterService.Id;
+
     public int GetCount()
     {
         return this.counterService.Count;

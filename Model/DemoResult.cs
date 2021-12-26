@@ -6,7 +6,9 @@ public class DemoResult
     
     public int CountFromDemoServiceUsingCounterService { get; set; }
 
-    public Guid CounterServiceId { get; set; }
+    public int CounterServiceId { get; set; }
     
-    public Guid DemoServiceId { get; set; }
+    public int DemoServiceId { get; set; }
+    
+    public int DemoServiceCounterServiceId { get; set; }
 }

@@ -1,4 +1,7 @@
-﻿namespace ServiceLifetimeDemo.Services;
+﻿using System.Runtime.CompilerServices;
+using BlazorWebAssemblyServiceLifetimeDemo.Client.Services;
+
+namespace ServiceLifetimeDemo.Services;
 
 public class ServiceUsingTransientCounterService: IServiceUsingTransientCounterService
 {
@@ -9,8 +12,10 @@ public class ServiceUsingTransientCounterService: IServiceUsingTransientCounterS
         this.counterService = counterService;
     }
     
-    public Guid Id { get; } = Guid.NewGuid();
-    
+    public int Id { get; } = IdHelper.GetNextId();
+
+    public int CounterServiceId => this.counterService.Id;
+
     public int GetCount()
     {
         return this.counterService.Count;

@@ -1,28 +1,30 @@
 <div class="mt-5">
   <h1>Transient Services</h1>
   <div class="mt-2">
-    Increasing the count in the transient count service does only increase the count in the instance directly passed to
-    the controller. Since the instance is destroyed thereafter, the count will never be larger than 1. The instance of
-    the service using the transient coounter service, that gets another transient instance of the counter service
-    passed,
-    returns 0 always from it's <code>GetCount</code> method, because it gets a different counter service instance
-    passed.
+    Increasing the count in the transient counter service does only increase the count in the instance directly passed
+    to the controller. Since the instance is destroyed thereafter, the count will never be larger than 1. The instance
+    of the service using the transient counter service, that gets another transient instance of the counter service
+    passed, returns 0 always from it's <code>GetCount</code> method, because it gets a different counter service
+    instance passed.
   </div>
   <div class="alert alert-info mt-2">
     This lifetime works best for lightweight, stateless services.
   </div>
   <div *ngIf="transientServicesResult != null">
     <div class="mt-2">
-      Current Count Directly from Counter Service: {{transientServicesResult.countDirectlyFromCounterService}}
+      Current count directly from counter service: {{transientServicesResult.countDirectlyFromCounterService}}
     </div>
     <div class="mt-2">
-      Current Count from Demo Service: {{transientServicesResult.countFromDemoServiceUsingCounterService}}
+      Current count from service using the counter service: {{transientServicesResult.countFromDemoServiceUsingCounterService}}
     </div>
     <div class="mt-2">
-      Counter Service ID: {{transientServicesResult.counterServiceId}}
+      Counter service ID: {{transientServicesResult.counterServiceId}}
     </div>
     <div class="mt-2">
-      Demo Service ID: {{transientServicesResult.demoServiceId}}
+      Demo service ID: {{transientServicesResult.demoServiceId}}
+    </div>
+    <div class="mt-2">
+      Counter service ID in service using the counter service: {{transientServicesResult.demoServiceCounterServiceId}}
     </div>
   </div>
   <div class="mt-2">
@@ -33,7 +35,7 @@
 <div class="mt-5">
   <h1>Scoped Services</h1>
   <div class="mt-2">
-    Increasing the count in the scoped count service does increase the count in the instance directly passed to
+    Increasing the count in the scoped counter service does increase the count in the instance directly passed to
     the controller as before. Since the instance is destroyed thereafter, the count will also never be larger than 1.
     However, the instance of the service using the scoped counter service now gets the same counter service instance
     passed. It's <code>GetCount</code> method now returns 1 also.
@@ -44,16 +46,19 @@
   </div>
   <div *ngIf="scopedServicesResult != null">
     <div class="mt-2">
-      Current Count Directly from Counter Service: {{scopedServicesResult.countDirectlyFromCounterService}}
+      Current count directly from counter service: {{scopedServicesResult.countDirectlyFromCounterService}}
     </div>
     <div class="mt-2">
-      Current Count from Demo Service: {{scopedServicesResult.countFromDemoServiceUsingCounterService}}
+      Current count from service using the counter service: {{scopedServicesResult.countFromDemoServiceUsingCounterService}}
     </div>
     <div class="mt-2">
-      Counter Service ID: {{scopedServicesResult.counterServiceId}}
+      Counter service ID: {{scopedServicesResult.counterServiceId}}
     </div>
     <div class="mt-2">
-      Demo Service ID: {{scopedServicesResult.demoServiceId}}
+      Demo service ID: {{scopedServicesResult.demoServiceId}}
+    </div>
+    <div class="mt-2">
+      Counter service ID in service using the counter service: {{scopedServicesResult.demoServiceCounterServiceId}}
     </div>
   </div>
   <div class="mt-2">
@@ -65,7 +70,7 @@
   <h1>Singleton Services</h1>
   <div class="mt-2">
     <div>
-      Increasing the count in the singleton count service does increase the count any time the <code>Increase</code>
+      Increasing the count in the singleton counter service does increase the count any time the <code>Increase</code>
       method is called.
       Because the application stores only one instance and does not destroy it until it's stopped or recycled, the
       counter
@@ -77,23 +82,26 @@
       singleton service instances to share state between requests.
     </div>
     <div class="alert alert-warning mt-2">
-      Note however that when the application's website is stopped (or the application crashed) and is re-started, or the
+      Note  that when the application's website is stopped (or the application crashed) and is re-started, or the
       application pool is recycled in the web server, all singleton service instances get destroyed, hence all state
       gets lost.
     </div>
   </div>
   <div *ngIf="singletonServicesResult != null">
     <div class="mt-2">
-      Current Count Directly from Counter Service: {{singletonServicesResult.countDirectlyFromCounterService}}
+      Current count directly from counter service: {{singletonServicesResult.countDirectlyFromCounterService}}
     </div>
     <div class="mt-2">
-      Current Count from Demo Service: {{singletonServicesResult.countFromDemoServiceUsingCounterService}}
+      Current count from service using the counter service: {{singletonServicesResult.countFromDemoServiceUsingCounterService}}
     </div>
     <div class="mt-2">
-      Counter Service ID: {{singletonServicesResult.counterServiceId}}
+      Counter service ID: {{singletonServicesResult.counterServiceId}}
     </div>
     <div class="mt-2">
-      Demo Service ID: {{singletonServicesResult.demoServiceId}}
+      Demo service ID: {{singletonServicesResult.demoServiceId}}
+    </div>
+    <div class="mt-2">
+      Counter service ID in service using the counter service: {{singletonServicesResult.demoServiceCounterServiceId}}
     </div>
   </div>
   <div class="mt-2">
