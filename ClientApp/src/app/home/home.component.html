@@ -1,0 +1,103 @@
+<div class="mt-5">
+  <h1>Transient Services</h1>
+  <div class="mt-2">
+    Increasing the count in the transient count service does only increase the count in the instance directly passed to
+    the controller. Since the instance is destroyed thereafter, the count will never be larger than 1. The instance of
+    the service using the transient coounter service, that gets another transient instance of the counter service
+    passed,
+    returns 0 always from it's <code>GetCount</code> method, because it gets a different counter service instance
+    passed.
+  </div>
+  <div class="alert alert-info mt-2">
+    This lifetime works best for lightweight, stateless services.
+  </div>
+  <div *ngIf="transientServicesResult != null">
+    <div class="mt-2">
+      Current Count Directly from Counter Service: {{transientServicesResult.countDirectlyFromCounterService}}
+    </div>
+    <div class="mt-2">
+      Current Count from Demo Service: {{transientServicesResult.countFromDemoServiceUsingCounterService}}
+    </div>
+    <div class="mt-2">
+      Counter Service ID: {{transientServicesResult.counterServiceId}}
+    </div>
+    <div class="mt-2">
+      Demo Service ID: {{transientServicesResult.demoServiceId}}
+    </div>
+  </div>
+  <div class="mt-2">
+    <button class="btn btn-primary" (click)="increaseTransientServiceCount()">Increase Count</button>
+  </div>
+</div>
+
+<div class="mt-5">
+  <h1>Scoped Services</h1>
+  <div class="mt-2">
+    Increasing the count in the scoped count service does increase the count in the instance directly passed to
+    the controller as before. Since the instance is destroyed thereafter, the count will also never be larger than 1.
+    However, the instance of the service using the scoped counter service now gets the same counter service instance
+    passed. It's <code>GetCount</code> method now returns 1 also.
+  </div>
+  <div class="alert alert-info mt-2">
+    Scoped service instances are useful to share state within one request between within objects using the service
+    instance. A good example is the Entity Framework's DbContext.
+  </div>
+  <div *ngIf="scopedServicesResult != null">
+    <div class="mt-2">
+      Current Count Directly from Counter Service: {{scopedServicesResult.countDirectlyFromCounterService}}
+    </div>
+    <div class="mt-2">
+      Current Count from Demo Service: {{scopedServicesResult.countFromDemoServiceUsingCounterService}}
+    </div>
+    <div class="mt-2">
+      Counter Service ID: {{scopedServicesResult.counterServiceId}}
+    </div>
+    <div class="mt-2">
+      Demo Service ID: {{scopedServicesResult.demoServiceId}}
+    </div>
+  </div>
+  <div class="mt-2">
+    <button class="btn btn-primary" (click)="increaseScopedServiceCount()">Increase Count</button>
+  </div>
+</div>
+
+<div class="mt-5">
+  <h1>Singleton Services</h1>
+  <div class="mt-2">
+    <div>
+      Increasing the count in the singleton count service does increase the count any time the <code>Increase</code>
+      method is called.
+      Because the application stores only one instance and does not destroy it until it's stopped or recycled, the
+      counter
+      service returns the increased count. This counts for all requests from all clients! The service using the
+      singleton counter service of course now also returns the same count via it's <code>GetCount</code> method.
+    </div>
+    <div class="alert alert-info mt-2">
+      Singleton service instances are useful for services that are expensive to instantiate. You should not use
+      singleton service instances to share state between requests.
+    </div>
+    <div class="alert alert-warning mt-2">
+      Note however that when the application's website is stopped (or the application crashed) and is re-started, or the
+      application pool is recycled in the web server, all singleton service instances get destroyed, hence all state
+      gets lost.
+    </div>
+  </div>
+  <div *ngIf="singletonServicesResult != null">
+    <div class="mt-2">
+      Current Count Directly from Counter Service: {{singletonServicesResult.countDirectlyFromCounterService}}
+    </div>
+    <div class="mt-2">
+      Current Count from Demo Service: {{singletonServicesResult.countFromDemoServiceUsingCounterService}}
+    </div>
+    <div class="mt-2">
+      Counter Service ID: {{singletonServicesResult.counterServiceId}}
+    </div>
+    <div class="mt-2">
+      Demo Service ID: {{singletonServicesResult.demoServiceId}}
+    </div>
+  </div>
+  <div class="mt-2">
+    <button class="btn btn-primary" (click)="increaseSingletonServiceCount()">Increase Count</button>
+  </div>
+</div>
+

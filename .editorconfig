@@ -1,0 +1,15 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+indent_style = spaces
+indent_size = 4
+tab_size = 4
+
+# Avoid that Visual Studio and Resharper align parameters in multiple line under the first parameter in the first line
+csharp_align_multiline_argument = false
+resharper_csharp_align_multiline_argument = false
+resharper_align_multiline_argument = false
+align_multiline_argument = false
